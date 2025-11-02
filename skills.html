@@ -10,7 +10,11 @@
     <nav class="nav">
         <div class="container">
             <div class="nav-row">
-                <a href="./index.html" class="logo"><strong>Frontend</strong>DEV</a>
+                <!--<a href="./index.html" class="logo"><strong>Frontend</strong>DEV</a> 165 код css-->
+                <a href="./index.html" class="logo" data-text="Awesome">
+                    <span class="actual-text">&nbsp;VlaDEV&nbsp;</span>
+                    <span aria-hidden="true" class="logo-hover__text">&nbsp;VlaDEV&nbsp;</span>
+                </a>
                 <button class="dark-mode-btn">
                     <img src="./img/icons/Sun.svg" alt="" class="dark-mode-btn__icon">
                     <img src="./img/icons/Moon.svg" alt="" class="dark-mode-btn__icon">
@@ -23,28 +27,24 @@
             </div>
         </div>
     </nav>
-
-    <main class="section">
-        <div class="container">
-            <h1 class="title-1">Skills</h1>
-
-            <ul class="content-list">
-                <li class="content-list__item">
-                    <h2 class="title-2">Frontend </h2>
-                    <p>HTML, CSS, responsive design, JavaScript, React, Git, GitHub, Docker, Figma, layout from mockups.</p>
-                </li>
-                <li class="content-list__item">
-                    <h2 class="title-2">Backend</h2>
-                    <p>NodeJS, JavaScript, more coming soon...</p>
-                </li>
-            </ul>
+        <main class="section">
+            <div class="container">
+                <h1 class="title-1 fade-up">Skills</h1>
             
+                <ul class="content-list">
+                    <li class="content-list__item fade-up">
+                        <h2 class="title-2 fade-up">Frontend </h2>
+                        <p class="fade-up">HTML, CSS, responsive design, JavaScript, React, Git, GitHub, Docker, Figma, layout from mockups.</p>
+                    </li>
+                    <li class="content-list__item fade-up">
+                        <h2 class="title-2 fade-up">Backend</h2>
+                        <p class="fade-up">NodeJS, JavaScript, more coming soon...</p>
+                    </li>
+                </ul>
+            </div>
+        </main>
 
-            
-
-        </div>
-    </main>
-
+        
     <footer class="footer">
         <div class="container">
             <div class="footer__wrapper">
@@ -115,7 +115,7 @@
               </li>
             </ul>
             <div class="copyright">
-                <p>© 2025 vlad-xom.com</p>
+                <p>© 2025 vlad.webdev.xom@gmail.com</p>
             </div>
             </div>
         </div>

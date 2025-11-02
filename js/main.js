@@ -1,66 +1,79 @@
-const btnDarkMode = document.querySelector(".dark-mode-btn");
+document.addEventListener("DOMContentLoaded", () => {
+  if (!('IntersectionObserver' in window)) {
+      console.warn('IntersectionObserver не підтримується браузером');
+      return;
+  }
 
-// якщо кнопки немає — вийти, щоб не було помилок
-if (!btnDarkMode) {
-    console.warn('Кнопка .dark-mode-btn не знайдена');
-    throw new Error('Кнопка .dark-mode-btn не знайдена');
-}
+  const aboutSections = document.querySelectorAll('.fade-in');
+  if (!aboutSections.length) {
+      console.warn('Елементи .fade-in не знайдено');
+      return;
+  }
 
-// helper — застосувати темний режим
-function enableDark() {
-    btnDarkMode.classList.add("dark-mode-btn--active");
-    document.body.classList.add("dark");
-    localStorage.setItem("darkMode", "dark");
-}
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const delay = entry.target.dataset.delay || 0;
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }, delay);
+      }
+    });
+  }, {threshold: 0.2});
+  
+  aboutSections.forEach(section => observer.observe(section));
+});
+  
 
-function disableDark() {
-    btnDarkMode.classList.remove("dark-mode-btn--active");
-    document.body.classList.remove("dark");
-    localStorage.setItem("darkMode", "light");
-}
+  /* ===== Dark Mode ===== */
+  const btnDarkMode = document.querySelector(".dark-mode-btn");
 
-// 1) Перевірка збереженого вибору в localStorage (першочергово)
-const saved = localStorage.getItem("darkMode");
-if (saved === "dark") {
-    enableDark();
-} else if (saved === "light") {
-    disableDark();
-} else {
-    // 2) Якщо збереження немає — беремо системні налаштування (якщо доступні)
-    if (window.matchMedia) {
-        const mq = window.matchMedia("(prefers-color-scheme: dark)");
-        if (mq.matches) {
-            enableDark();
-        } else {
-            disableDark();
+  if (btnDarkMode) {
+
+    const enableDark = () => {
+      btnDarkMode.classList.add("dark-mode-btn--active");
+      document.body.classList.add("dark");
+      localStorage.setItem("darkMode", "dark");
+    };
+
+    const disableDark = () => {
+      btnDarkMode.classList.remove("dark-mode-btn--active");
+      document.body.classList.remove("dark");
+      localStorage.setItem("darkMode", "light");
+    };
+
+    // Перевірка localStorage
+    const saved = localStorage.getItem("darkMode");
+    if (saved === "dark") enableDark();
+    else if (saved === "light") disableDark();
+    else if (window.matchMedia) {
+      // Беремо системні налаштування
+      const mq = window.matchMedia("(prefers-color-scheme: dark)");
+      if (mq.matches) enableDark();
+      else disableDark();
+
+      // Слухаємо зміни системної теми
+      mq.addEventListener('change', (event) => {
+        if (localStorage.getItem("darkMode") == null) {
+          if (event.matches) enableDark();
+          else disableDark();
         }
-
-        // 3) Слухаємо зміни системної теми і оновлюємо (якщо користувач не зберіг свій вибір)
-        mq.addEventListener('change', (event) => {
-            // тільки якщо користувач не зберіг вручну (тобто saved === null)
-            if (localStorage.getItem("darkMode") == null) {
-                if (event.matches) {
-                    enableDark();
-                } else {
-                    disableDark();
-                }
-            }
-        });
+      });
     }
-}
 
-// 4) Перемикання по кнопці
-btnDarkMode.onclick = function () {
-    const isDark = document.body.classList.toggle('dark');
+    // Перемикання кнопкою
+    btnDarkMode.addEventListener('click', () => {
+      const isDark = document.body.classList.toggle('dark');
+      if (isDark) btnDarkMode.classList.add("dark-mode-btn--active");
+      else btnDarkMode.classList.remove("dark-mode-btn--active");
+      localStorage.setItem('darkMode', isDark ? 'dark' : 'light');
+    });
 
-    if (isDark) {
-        btnDarkMode.classList.add("dark-mode-btn--active");
-        localStorage.setItem('darkMode', 'dark');
-    } else {
-        btnDarkMode.classList.remove("dark-mode-btn--active");
-        localStorage.setItem('darkMode', 'light');
-    }
-};
+  }
+
+;
+
 
 
 

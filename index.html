@@ -5,20 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My portfolio</title>
     <link rel="stylesheet" href="./css/main.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=alternate_email" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=alternate_email" />
 
 </head>
 <body>
     <nav class="nav">
         <div class="container">
             <div class="nav-row">
-                <a href="./index.html" class="logo"><strong>Frontend</strong>DEV</a>
+                <!--<a href="./index.html" class="logo"><strong>Frontend</strong>DEV</a> 165 код css-->
+                <a href="./index.html" class="logo" data-text="Awesome">
+                    <span class="actual-text">&nbsp;VlaDEV&nbsp;</span>
+                    <span aria-hidden="true" class="logo-hover__text">&nbsp;VlaDEV&nbsp;</span>
+                </a>
 
                 <button class="dark-mode-btn">
                     <img src="./img/icons/Sun.svg" alt="" class="dark-mode-btn__icon">
                     <img src="./img/icons/Moon.svg" alt="" class="dark-mode-btn__icon">
                 </button>
 
+                <!-- From Uiverse.io by JkHuger --> 
                 <ul class="nav-list">
                     <li class="nav-list__item"><a href="./index.html" class="nav-list__link nav-list__link--active">Project</a></li>
                     <li class="nav-list__item"><a href="./skills.html" class="nav-list__link">Skills</a></li>
@@ -29,17 +34,14 @@
     </nav>
 
     <header class="header">
-                <div class="header__wrapper">
-                <h1 class="header__title">
-                    <strong>Hi, my name is <em>Vlad</em></strong><br>
-                     a frontend developer
-                </h1>
+        <div class="header__wrapper">
+            <h1 class="header__title"><strong>Hi, my name is <em>Vlad</em></strong><br>a frontend developer</h1>
                 <div class="header__text">
                     <p>with passion for learning and creating.</p>
                 </div>
                 <!--class="btn" Був такий клас але змінив 300 строчка css-->
                 <a href=".//resume.html" class="header-btn">My resume</a>
-            </div>
+        </div>
     </header>
 
     <main class="section">
@@ -47,35 +49,43 @@
             <h2 class="title-1">Projects</h2>
             <ul class="projects">
                 <li class="project">
-                    <a href="./project-page.html">
-                    <img src="./img/projects/01.jpg" alt="Project img" class="project__img">
-                    <h3 class="project__title">site 1</h3>
+                    <a href="https://vlad-xom.github.io/urus-veb-site/">
+                    <img src="./img/projects/img-site-1.jpg" alt="Project img" class="project__img">
+                    <h3 class="project__title">Lamborghini Urus</h3>
                     </a>
                 </li>
                 <li class="project">
-                    <a href="./project-page.html">
-                    <img src="./img/projects/02.jpg" alt="Project img" class="project__img">
-                    <h3 class="project__title">site 1</h3>
+                    <a href="https://vlad-xom.github.io/agency-veb-site/">
+                    <img src="./img/projects/img-site-2.jpg" alt="Project img" class="project__img">
+                    <h3 class="project__title">Agency</h3>
                     </a>
                 </li>
                 <li class="project">
-                    <a href="./project-page.html">
-                    <img src="./img/projects/03.jpg" alt="Project img" class="project__img">
-                    <h3 class="project__title">site 1</h3>
+                    <a href="https://vlad-xom.github.io/paralax-site/">
+                    <img src=".//img/projects/img-site-3.jpg" alt="Project img" class="project__img">
+                    <h3 class="project__title">Paralax scroll</h3>
+                    </a>
+                </li>
+
+                <li class="project">
+                    <a href="https://vlad-xom.github.io/coffe-home/">
+                    <img src="./img/projects/img-site-4.jpg" alt="Project img" class="project__img">
+                    <h3 class="project__title">Coffe home</h3>
                     </a>
                 </li>
                 <li class="project">
-                    <img src="./img/projects/04.jpg" alt="Project img" class="project__img">
-                    <h3 class="project__title">site 1</h3>
+                    <a href="https://vlad-xom.github.io/lava-roaster/">
+                    <img src=".//img/projects/img-site-5.jpg" alt="Project img" class="project__img">
+                    <h3 class="project__title">Lava Roaster</h3>
+                    </a>
                 </li>
                 <li class="project">
-                    <img src="./img/projects/05.jpg" alt="Project img" class="project__img">
-                    <h3 class="project__title">site 1</h3>
+                    <a href="https://vlad-xom.github.io/car-ford-lux/">
+                    <img src=".//img/projects/img-site-6.jpg" alt="Project img" class="project__img">
+                    <h3 class="project__title">Car lux Ford</h3>
+                    </a>
                 </li>
-                <li class="project">
-                    <img src="./img/projects/06.jpg" alt="Project img" class="project__img">
-                    <h3 class="project__title">site 1</h3>
-                </li>
+                
             </ul>
         </div>
     </main>
@@ -150,7 +160,7 @@
               </li>
             </ul>
             <div class="copyright">
-                <p>© 2025 vlad-xom.com</p>
+                <p>© 2025 vlad.webdev.xom@gmail.com</p>
             </div>
             </div>
         </div>

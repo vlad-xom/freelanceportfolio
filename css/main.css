@@ -17,25 +17,31 @@
     --header-text: var(--white);
     --accent: var(--purpule);
 
-
-
+    /* Logo btn */
+    --border-right: 6px;
+    --fs-size: 2em;
 
     /* light mode */
     --page-bg: var(--white);
     --text-color: var(--black);
-
     --title-1: var(--accent);
-
+    --color-icons: var(--accent);
     --project-card-bg: var(--white);
     --project-card-text: var(--black);
     --box-shadow: 0px 5px 36px rgba(0, 0, 0, 0.25);
+
+
+    --fade-up-duration: 1.4s;   /* тривалість анімації */
+    --fade-up-distance: 40px; /* на скільки елемент буде зміщено вниз спочатку */
 }
 .dark {
     /* dark mode */
     --page-bg: #252526;
     --text-color: var(--white);
+    --page-resume-bg: #3a3a3b;
 
     --title-1: var(--white);
+    --color-icons: var(--white);
 
     --project-card-bg: var(--black);
     --project-card-text: var(--white);
@@ -117,6 +123,26 @@ html,body {
   font-style: normal;
 }
 */
+                                                      /*        FADE UP          */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease forwards;
+}
+
+/* Щоб з’являлися з невеликою затримкою один за одним */
+.fade-up:nth-child(1) { animation-delay: 0.4s; }
+.fade-up:nth-child(2) { animation-delay: 0.6s; }
+.fade-up:nth-child(3) { animation-delay: 0.8s; }
+.fade-up:nth-child(4) { animation-delay: 1s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 
 /* Nav */
@@ -136,7 +162,8 @@ html,body {
     row-gap: 20px;
     flex-wrap: wrap;
 }
-
+                                                         /*LOGO*/
+                                                         /*
 .logo {
     margin-right: auto;
     color: var(--accent);
@@ -147,6 +174,41 @@ html,body {
 .logo strong {
     font-weight: 700;
 }
+*/
+.logo{
+  height: auto;
+  background: transparent;
+  border: none;
+  margin-right: auto;
+}
+
+.logo {
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: var(--fs-size);
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  text-transform: uppercase;
+  color: var(--white);
+  font-weight: 500;
+}
+.logo-hover__text {
+  position: absolute;
+  box-sizing: border-box;
+  content: attr(data-text);
+  color: var(--accent);
+  width: 0%;
+  inset: 0;
+  border-right: var(--border-right) solid var(--accent);
+  overflow: hidden;
+  transition: 0.5s;
+  -webkit-text-stroke: 1px var(--accent);
+}
+.logo:hover .logo-hover__text {
+  width: 100%;
+  filter: drop-shadow(0 5px 25px var(--accent));
+}
+
 .nav-list {
     display: flex;
     align-items: center;
@@ -275,6 +337,42 @@ html,body {
   transition: 0.5s ease;
   user-select: none;
 }
+
+
+                                                            /*FADE UP */
+.header__title,
+.header__text,
+.header-btn {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: slideUp 1s ease-out forwards;
+}
+
+/* Затримка для кожного елемента, щоб появлялись по черзі */
+.header__title {
+  animation-delay: 0.3s;
+}
+
+.header__text {
+  animation-delay: 0.6s;
+}
+
+.header-btn {
+  animation-delay: 1.2s;
+}
+
+/* Анімація появи знизу вверх */
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/**/
 
 .header-btn:hover {
   color: #ffffff;
@@ -407,6 +505,7 @@ html,body {
 }
 
 .project__img {
+    height: 240px;
     border-radius: 10px;
 }
 
@@ -613,6 +712,86 @@ ul {
 
 
                                                 /* Мобільна та декстопна адаптація */
+/* Приховане меню за замовчуванням */
+.floating-menu {
+  display: none;
+}
+
+/* Активується при ширині <=700px */
+/* @media (max-width: 700px) {
+  .floating-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    /*
+    max-width: 340px;
+    
+    height: 70px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .floating-menu__btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+
+  /* Ефект сяйва при наведенні 
+  .floating-menu__btn:hover {
+    box-shadow: 0 0 15px var(--accent), 0 0 30px #4E38C9;
+  }
+
+  .floating-menu__btn i {
+    font-size: 26px;
+    color: var(--color-icons);
+    transition: 0.3s;
+  }
+
+  /* Легке постійне світіння (анімоване) 
+  .floating-menu__btn i.glow {
+    animation: glowPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes glowPulse {
+    0% {
+      text-shadow: 0 0 4px #4E38C9, 0 0 8px #4E38C9;
+    }
+    50% {
+      text-shadow: 0 0 12px #4E38C9, 0 0 24px #4E38C9;
+    }
+    100% {
+      text-shadow: 0 0 4px #4E38C9, 0 0 8px #4E38C9;
+    }
+  }
+
+  .footer__wrapper {
+    display: none;
+  }
+  .footer {
+    height: 120px;
+  }
+}*/
+
+
 @media (max-width: 620px) {
 
     .header {
@@ -647,9 +826,10 @@ ul {
     .footer {
         padding: 40px 0 30px;
     }
+    /*
     .footer__wrapper {
         row-gap: 20px;
-    }
+    }*/
     .social__item {
         width: 28px;
     }
@@ -679,54 +859,120 @@ ul {
 
 
 
-.resume-box {
-    padding: 15px 5px;
-}
 
-.resume-card {
-  display: flex;
-  flex-direction: row;
+
+                                                        /* Початок тест коду*/
+
+
+
+
+
+
+.contact {
+  text-align: center;
+  padding: 60px 20px;
   font-weight: 600;
-  background-color: var(--project-card-bg);
   font-family: "Poppins", sans-serif;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  padding: 25px 25px;
 }
 
-.resume-image {
-  flex: 1;
-  background-color: var(--white);
+.contact__title {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: var(--accent);
 }
 
-.resume-image img {
-  object-fit: cover;
+.contact__text {
+  font-size: 1.1em;
+  margin-bottom: 30px;
+  color: var(--text-color);
+}
+
+.contact__form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact__form input,
+.contact__form textarea {
   width: 100%;
-  height: 100%;
-  display: block;
-
-}
-
-.resume-info {
-  flex: 2;
-  padding: 30px;
-}
-
-.resume-info h1 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-size: 28px;
-  color: var(--accent);
-}
-
-.resume-info p {
-  margin: 8px 0;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   font-size: 16px;
-  color: var(--project-card-text);
+  font-family: Arial, sans-serif;
 }
 
-.resume-info strong {
-  color: var(--accent);
+.contact__form input:focus,
+.contact__form textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 5px rgba(78, 56, 201, 0.4);
 }
+
+.button {
+  background: var(--accent);
+  color: var(--black);
+  font-weight: 600;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: #3728a6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
