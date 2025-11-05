@@ -498,7 +498,7 @@ html,body {
 }
 
 .project {
-    max-width: 370px;
+    max-width: 380px;
     background-color: var(--project-card-bg);
     box-shadow: var(--box-shadow);
     border-radius: 10px;
