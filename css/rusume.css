@@ -66,7 +66,7 @@ a {
 }
 
 section {
-  padding: 80px 20px;
+  padding: 35px 20px;
 }
 
 h2 {
@@ -185,13 +185,12 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 60px;
-  padding: 60px 20px;
+  padding: 40px 20px;
 }
 
 .about h2 {
   text-align: center;
   font-size: 2.2rem;
-  margin-bottom: 50px;
   color: var(--accent);
 }
 
@@ -244,8 +243,148 @@ h2 {
   color: var(--accent);
   font-weight: 600;
 }
+/* ====== Slider ====== */
+
+.slider-section {
+  width: 100%;
+  padding: 0 0 40px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  background: rgba(10, 10, 10, 0.5); /* напівпрозорий фон */
+  backdrop-filter: blur(10px); /* блюр фону */
+  -webkit-backdrop-filter: blur(10px); /* для Safari */
+  border-radius: 20px; /* якщо хочеш закруглення */
+}
+
+.swiper {
+  width: 100%;
+  overflow: visible;
+}
+
+.swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+.swiper-slide {
+  width: 250px !important;
+  height: 150px !important;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px var(--white);
+  transition: transform 0.3s ease, box-shadow 0.4s ease; /* плавний перехід */
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.swiper-slide {
+  will-change: transform;
+}
+/* ====== Rating ====== */
+.stars {
+  display: flex;
+  flex-direction: row-reverse; /* для правильного ліво→право */
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.stars input {
+  display: none;
+}
+
+.stars label {
+  font-size: 3rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.2s;
+}
+
+/* Hover: підсвітка всіх зірок лівіше */
+.stars label:hover,
+.stars label:hover ~ label {
+  color: var(--accent);
+  transform: scale(1.2);
+}
+
+/* Checked: підсвітка всіх вибраних */
+.stars input:checked ~ label {
+  color: #ccc; /* скидаємо колір всім попереднім */
+}
+
+.stars input:checked + label,
+.stars input:checked + label ~ label {
+  color: var(--accent);
+  transform: scale(1.2);
+}
+
+/* Кнопка */
+.rating-section button {
+  background-color: var(--accent);
+  border: none;
+  color: var(--white);
+  font-weight: 600;
+  padding: 12px 25px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.rating-section button:hover {
+  background-color: var(--white);
+  color: var(--accent);
+  transform: scale(1.05);
+}
+.rating-btn {
+  background-color: var(--accent);
+  border: none;
+  color: var(--white);
+  padding: 12px 25px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.rating-btn:hover {
+  background-color: var(--white);
+  color: var(--accent);
+  transform: scale(1.05);
+}
+
+.rating-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.rating-btn {
+  background-color: var(--accent);
+  border: none;
+  color: var(--white);
+  padding: 12px 25px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.rating-btn:hover {
+  background-color: var(--white);
+  color: var(--accent);
+  transform: scale(1.05);
+}
 
 /* ====== Contact ====== */
+.contacts {
+  padding: 0 10px;
+}
 .contact {
   max-width: 600px;
   margin: 0 auto;
@@ -289,6 +428,7 @@ h2 {
   cursor: pointer;
   font-size: 1rem;
   transition: background 0.3s ease, transform 0.2s;
+  font-weight: 600;
 }
 
 .contact button:hover {
@@ -336,3 +476,16 @@ footer {
   transform: scale(1.05);
   box-shadow: 0 0 12px rgba(78, 56, 201, 0.8);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

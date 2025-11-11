@@ -93,8 +93,6 @@ projects.forEach(project => {
 
 
 
-
-
                     // Початковий код
 
 /*const btnDarkMode = document.querySelector(".dark-mode-btn");
