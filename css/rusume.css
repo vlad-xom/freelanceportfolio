@@ -3,7 +3,8 @@
     --black: #171718;
     --black-border: #26292d;
     --white: #fff;
-    --purpule: #956afa;
+    --color-admin: #956afa; /*956afa*/
+    
 
 
 
@@ -11,7 +12,7 @@
     --dark-bg: var(--black);
     --dark-border: var(--black-border);
     --header-text: var(--white);
-    --accent: var(--purpule);
+    --accent: var(--color-admin);
     --shadow-purple: 0 15px 35px var(--accent);
 
     /* Logo btn */
@@ -59,6 +60,32 @@ body {
   background-color: #0d0d0d;
   color: #f0f0f0;
   overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle, rgb(0, 0, 0), #956afa3e),
+    radial-gradient(circle, #956afa3e, rgb(0, 0, 0) 70%);
+  animation: moveNebula 18s ease-in-out infinite alternate;
+  filter: blur(80px);
+  z-index: -1;
+}
+
+@keyframes moveNebula {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(10%, -10%) scale(1.2);
+  }
+  100% {
+    transform: translate(-10%, 10%) scale(1.1);
+  }
 }
 
 a {
@@ -252,10 +279,6 @@ h2 {
   justify-content: center;
   overflow: hidden;
   position: relative;
-  background: rgba(10, 10, 10, 0.5); /* напівпрозорий фон */
-  backdrop-filter: blur(10px); /* блюр фону */
-  -webkit-backdrop-filter: blur(10px); /* для Safari */
-  border-radius: 20px; /* якщо хочеш закруглення */
 }
 
 .swiper {
@@ -264,27 +287,28 @@ h2 {
 }
 
 .swiper-wrapper {
-  transition-timing-function: linear !important;
+  transition-timing-function: linear !important; /* плавний рух */
 }
 
 .swiper-slide {
   width: 250px !important;
   height: 150px !important;
-  border-radius: 12px;
+  border-radius: 5px;
   overflow: hidden;
   flex-shrink: 0;
-  box-shadow: 0 0 10px var(--white);
-  transition: transform 0.3s ease, box-shadow 0.4s ease; /* плавний перехід */
+  transition: transform 0.3s ease, box-shadow 0.4s ease;
+  will-change: transform;
 }
 
 .swiper-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+  border: 3px solid var(--accent);
 }
-.swiper-slide {
-  will-change: transform;
-}
+
+
 /* ====== Rating ====== */
 .stars {
   display: flex;
