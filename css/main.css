@@ -474,6 +474,18 @@ html,body {
     0 0 50px var(--accent), 0 0 100px var(--accent);
 }
 
+
+#typing::after {
+  content: "</>";
+  margin-left: 4px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
 /* 
 .btn {
     display: inline-block;
@@ -911,7 +923,7 @@ ul {
         min-height: unset;
     }
     .header__title {
-        font-size: 30px;
+        font-size: 25px;
     }
     .header__title strong {
         font-size: 40px;

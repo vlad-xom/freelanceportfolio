@@ -91,6 +91,22 @@ projects.forEach(project => {
 });
 
 
+const text = `a frontend developer
+with passion for learning and creating.`;
+
+const typing = document.getElementById("typing");
+let index = 0;
+const typeSpeed = 80; // можна змінити швидкість друку
+
+function typeEffect() {
+  if (index <= text.length) {
+    typing.textContent = text.slice(0, index++);
+    setTimeout(typeEffect, typeSpeed);
+  }
+}
+
+typeEffect();
+
 
 
                     // Початковий код
