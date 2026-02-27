@@ -8,6 +8,7 @@
     --black-border: #26292d;
     --white: #fff;
     --purpule: #956afa; /*#5c62ec*/
+    --page-bg-color: #ffffff;
 
 
 
@@ -22,9 +23,9 @@
     --fs-size: 2em;
 
     /* light mode */
-    --page-bg: var(--white);
+    --page-bg: var(--page-bg-color);
     --text-color: var(--black);
-    --title-1: var(--accent);
+    --title-1: var(--black);
     --color-icons: var(--accent);
     --project-card-bg: var(--white);
     --project-card-text: var(--black);
@@ -593,9 +594,9 @@ html,body {
 
 
 .projects {
-    display: flex;
+    display: grid;
     justify-content: center;
-    flex-wrap: wrap;
+    grid-template-columns: 1fr 1fr 1fr;
     column-gap: 30px;
     row-gap: 30px;
 }
@@ -610,6 +611,7 @@ html,body {
     transition: all 0.6s ease-out;
 }
 .project.show {
+    border: 2px solid var(--black);
     opacity: 1;
     transform: translateX(0);
 }
@@ -832,6 +834,15 @@ ul {
   display: none;
 }
 
+
+
+
+
+
+
+
+
+
 /* Активується при ширині <=700px */
 /* @media (max-width: 700px) {
   .floating-menu {
@@ -905,6 +916,14 @@ ul {
     height: 120px;
   }
 }*/
+@media (max-width: 1270px) {
+  .projects {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
 @media (max-width: 780px) {
   .nav-row {
     justify-content: center;
@@ -912,11 +931,9 @@ ul {
   .card-slim {
     margin-right: auto;
     margin-left: auto;
-}
+  }
 
 }
-
-
 @media (max-width: 620px) {
 
     .header {
