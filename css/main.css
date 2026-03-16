@@ -708,7 +708,7 @@ html,body {
 
 .skills--tech-grid li:hover {
     background: var(--accent);
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     color: var(--white);
 }
 
