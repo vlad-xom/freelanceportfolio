@@ -375,7 +375,7 @@ html,body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 695px;
+    min-height: 778px;
     padding: 40px 0;
     background-color: var(--dark-bg);
     color: var(--header-text);
@@ -660,8 +660,57 @@ html,body {
     line-height: 1.3;
 }
 
-/* Content list */
+/* skills */
+.title-1 {
+  color: var(--color-icons);
+}
+.skills--grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
 
+.skills--card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+    border-radius: 30px;
+    padding: 1px; /* Для градієнтної рамки */
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.skills--card-inner {
+    background: var(--project-card-bg);
+    border-radius: 29px;
+    padding: 40px;
+    height: 100%;
+    color: var(--project-card-text);
+    border: 2px solid var(--accent);
+}
+
+.skills--tech-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    list-style: none;
+    margin-top: 20px;
+}
+
+.skills--tech-grid li {
+    background: rgba(92, 98, 236, 0.05);
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+}
+
+.skills--tech-grid li:hover {
+    background: var(--accent);
+    transform: translateY(-5px);
+    color: var(--white);
+}
 
 
                                                              /* Footer */

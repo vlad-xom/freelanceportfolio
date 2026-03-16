@@ -26,24 +26,40 @@
             </div>
         </div>
     </nav>
-        <main class="section">
-            <div class="container">
-                <h1 class="title-1 fade-up">Skills</h1>
-            
-                <ul class="content-list">
-                    <li class="content-list__item fade-up">
-                        <h2 class="title-2 fade-up">Frontend </h2>
-                        <p class="fade-up">HTML, CSS, responsive design, JavaScript, React, Git, GitHub, Docker, Figma, layout from mockups.</p>
-                    </li>
-                    <li class="content-list__item fade-up">
-                        <h2 class="title-2 fade-up">Backend</h2>
-                        <p class="fade-up">NodeJS, JavaScript, more coming soon...</p>
-                    </li>
-                </ul>
-            </div>
-        </main>
-
+<main class="section">
+    <div class="container">
+        <h1 class="title-1 fade-up">Technical Arsenal</h1>
         
+        <div class="skills--grid">
+            <div class="skills--card" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                <div class="skills--card-inner">
+                    <h2 class="title-2">Frontend</h2>
+                    <ul class="skills--tech-grid">
+                        <li>React.js</li><li>Next.js</li><li>TypeScript</li><li>Framer Motion</li><li>Tailwind</li><li>Redux</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="skills--card" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                <div class="skills--card-inner">
+                    <h2 class="title-2">Backend</h2>
+                    <ul class="skills--tech-grid">
+                        <li>Node.js</li><li>NestJS</li><li>PostgreSQL</li><li>Redis</li><li>GraphQL</li><li>Docker</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="skills--card" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                <div class="skills--card-inner">
+                    <h2 class="title-2">DevOps</h2>
+                    <ul class="skills--tech-grid">
+                        <li>Kubernetes</li><li>AWS</li><li>CI/CD</li><li>Terraform</li><li>Nginx</li><li>Linux</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
     <footer class="footer">
         <div class="container">
             <div class="footer__wrapper">
@@ -110,7 +126,7 @@
             </div>
         </div>
     </footer>
-
-        <script src="./js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<script src="./js/main.js"></script>
 </body>
 </html>
