@@ -76,9 +76,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+const projects = document.querySelectorAll(".project");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, { threshold: 0.2 });
+
+projects.forEach(project => {
+    observer.observe(project);
+});
 
 
+const text = `a frontend developer
+with passion for learning and creating.`;
 
+const typing = document.getElementById("typing");
+let index = 0;
+const typeSpeed = 80; // можна змінити швидкість друку
+
+function typeEffect() {
+  if (index <= text.length) {
+    typing.textContent = text.slice(0, index++);
+    setTimeout(typeEffect, typeSpeed);
+  }
+}
+
+typeEffect();
+//skillse
+    VanillaTilt.init(document.querySelectorAll(".skills--card"), {
+    max: 15,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.2,
+});
 
 
                     // Початковий код

@@ -3,7 +3,8 @@
     --black: #171718;
     --black-border: #26292d;
     --white: #fff;
-    --purpule: #5c62ec;
+    --color-admin: #956afa; /*956afa*/
+    
 
 
 
@@ -11,8 +12,8 @@
     --dark-bg: var(--black);
     --dark-border: var(--black-border);
     --header-text: var(--white);
-    --accent: var(--purpule);
-    --shadow-purple: 0 15px 35px rgba(92, 98, 236, 0.6);
+    --accent: var(--color-admin);
+    --shadow-purple: 0 15px 35px var(--accent);
 
     /* Logo btn */
     --border-right: 6px;
@@ -60,13 +61,39 @@ body {
   color: #f0f0f0;
   overflow-x: hidden;
 }
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle, rgb(0, 0, 0), #956afa3e),
+    radial-gradient(circle, #956afa3e, rgb(0, 0, 0) 70%);
+  animation: moveNebula 18s ease-in-out infinite alternate;
+  filter: blur(80px);
+  z-index: -1;
+}
+
+@keyframes moveNebula {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(10%, -10%) scale(1.2);
+  }
+  100% {
+    transform: translate(-10%, 10%) scale(1.1);
+  }
+}
 
 a {
   text-decoration: none;
 }
 
 section {
-  padding: 80px 20px;
+  padding: 35px 20px;
 }
 
 h2 {
@@ -185,14 +212,13 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 60px;
-  padding: 60px 20px;
+  padding: 40px 20px;
 }
 
 .about h2 {
   text-align: center;
   font-size: 2.2rem;
-  margin-bottom: 50px;
-  color: #fff;
+  color: var(--accent);
 }
 
 .about-left,
@@ -211,6 +237,7 @@ h2 {
 .about-right.visible {
   opacity: 1;
   transform: translateY(0);
+  border: 1px solid var(--accent);
 }
 
 .about-left {
@@ -232,36 +259,165 @@ h2 {
 .about ul {
   margin-bottom: 12px;
   line-height: 1.6;
-  color: #ddd;
+  color: var(--white);
 }
 
 .about ul {
   padding-left: 20px;
 }
 
-.about a {
-  color: #4E38C9;
-  transition: 0.3s;
-}
-
-.about a:hover {
-  text-decoration: underline;
-  color: #9b82ff;
-}
-
 .highlight {
-  color: #4E38C9;
+  color: var(--accent);
   font-weight: 600;
+}
+/* ====== Slider ====== */
+
+.slider-section {
+  width: 100%;
+  padding: 0 0 40px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.swiper {
+  width: 100%;
+  overflow: visible;
+}
+
+.swiper-wrapper {
+  transition-timing-function: linear !important; /* плавний рух */
+}
+
+.swiper-slide {
+  width: 250px !important;
+  height: 150px !important;
+  border-radius: 5px;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, box-shadow 0.4s ease;
+  will-change: transform;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: 3px solid var(--accent);
+}
+
+
+/* ====== Rating ====== */
+.stars {
+  display: flex;
+  flex-direction: row-reverse; /* для правильного ліво→право */
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.stars input {
+  display: none;
+}
+
+.stars label {
+  font-size: 3rem;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.2s;
+}
+
+/* Hover: підсвітка всіх зірок лівіше */
+.stars label:hover,
+.stars label:hover ~ label {
+  color: var(--accent);
+  transform: scale(1.2);
+}
+
+/* Checked: підсвітка всіх вибраних */
+.stars input:checked ~ label {
+  color: #ccc; /* скидаємо колір всім попереднім */
+}
+
+.stars input:checked + label,
+.stars input:checked + label ~ label {
+  color: var(--accent);
+  transform: scale(1.2);
+}
+
+/* Кнопка */
+.rating-section button {
+  background-color: var(--accent);
+  border: none;
+  color: var(--white);
+  font-weight: 600;
+  padding: 12px 25px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.rating-section button:hover {
+  background-color: var(--white);
+  color: var(--accent);
+  transform: scale(1.05);
+}
+.rating-btn {
+  background-color: var(--accent);
+  border: none;
+  color: var(--white);
+  padding: 12px 25px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.rating-btn:hover {
+  background-color: var(--white);
+  color: var(--accent);
+  transform: scale(1.05);
+}
+
+.rating-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.rating-btn {
+  background-color: var(--accent);
+  border: none;
+  color: var(--white);
+  padding: 12px 25px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.rating-btn:hover {
+  background-color: var(--white);
+  color: var(--accent);
+  transform: scale(1.05);
 }
 
 /* ====== Contact ====== */
+.contacts {
+  padding: 0 10px;
+}
 .contact {
   max-width: 600px;
   margin: 0 auto;
+  border: 1px solid var(--accent);
+  border-radius: 50px;
 }
 
 .contact h2 {
-  color: #fff;
+  color: var(--accent);
 }
 
 .contact form {
@@ -272,11 +428,11 @@ h2 {
 
 .contact input,
 .contact textarea {
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: var(--black);
+  border: 1px solid var(--black-border);
   border-radius: 8px;
   padding: 12px 15px;
-  color: #f0f0f0;
+  color: var(--white);
   font-size: 1rem;
   outline: none;
   transition: border 0.3s;
@@ -284,11 +440,11 @@ h2 {
 
 .contact input:focus,
 .contact textarea:focus {
-  border-color: #4E38C9;
+  border-color: var(--accent);
 }
 
 .contact button {
-  background-color: #4E38C9;
+  background-color: var(--accent);
   border: none;
   color: #fff;
   padding: 12px;
@@ -296,16 +452,64 @@ h2 {
   cursor: pointer;
   font-size: 1rem;
   transition: background 0.3s ease, transform 0.2s;
+  font-weight: 600;
 }
 
 .contact button:hover {
-  background-color: #3c2da5;
+  background-color: var(--white);
   transform: scale(1.05);
+  color: var(--accent);
+  font-weight: 700;
 }
 
 footer {
   text-align: center;
   margin-top: 60px;
+  margin-bottom: 60px;
   font-size: 0.9rem;
-  color: #777;
+  color: var(--accent);
 }
+/*  test code */
+
+
+
+
+
+
+
+.edu-link {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--accent);
+  border-radius: 8px;
+  border: 1px solid var(--black);
+  transition: 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 0 8px rgba(78, 56, 201, 0.5);
+}
+
+.edu-link:hover {
+  background: var(--accent);
+  border-color: var(--black);
+  color: var(--black);
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(78, 56, 201, 0.8);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
